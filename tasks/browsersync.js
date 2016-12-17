@@ -6,9 +6,9 @@ module.exports = function(options) {
 
   return function() {
 
-    browserSync.init(options);
+    browserSync.init(options.config);
 
-    browserSync.watch(`${options.server.baseDir}/**/*.*`).on('change', browserSync.reload);
+    browserSync.watch(`${options.config.server.baseDir}/**/*.*`).on('change', browserSync.reload);
   };
 
 };

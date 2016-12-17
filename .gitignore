@@ -1,3 +1,15 @@
+#NodeJS
 node_modules
+npm-debug.log
+
+#Bower
 app/bower
+
+#Git
+.git
+
+#Idea project file
 .idea
+
+#Mac OS
+.DS_Store
