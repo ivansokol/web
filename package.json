@@ -1,16 +1,16 @@
 {
-  "name": "web development",
+  "name": "web",
   "version": "1.0.0",
-  "scripts": {
-    "postinstall": "bower install"
-  },
+  "description": "web",
+  "main": "gulpfile.js",
+  "dependencies": {},
   "devDependencies": {
     "browser-sync": "^2.18.2",
     "del": "^2.2.2",
     "eslint": "^3.12.2",
     "eslint-config-airbnb-base": "^11.0.0",
     "eslint-plugin-import": "^2.2.0",
-    "gulp": "git+https://git@github.com/gulpjs/gulp.git#4.0",
+    "gulp": "github:gulpjs/gulp#4.0",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-csscomb": "^3.0.8",
     "gulp-csslint": "^1.0.0",
@@ -29,5 +29,18 @@
     "stream-combiner2": "^1.1.1",
     "wiredep": "^4.0.0"
   },
-  "dependencies": {}
+  "scripts": {
+    "test": "gulp",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ivansokol/web.git"
+  },
+  "author": "ivan sokol",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ivansokol/web/issues"
+  },
+  "homepage": "https://github.com/ivansokol/web#readme"
 }

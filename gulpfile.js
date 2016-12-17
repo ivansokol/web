@@ -25,9 +25,9 @@ global.$ = {
     
     watch: { //Тут мы укажем, за изменением каких файлов мы хотим наблюдать
         html:  'app/**/*.html',
-        js:    'app/js/**/*.js',
+        //js:    'app/js/**/*.js',
         css:   'app/less/**/*.less',
-        img:   'app/img/**/*.*',
+        //img:   'app/img/**/*.*',
         fonts: 'app/fonts/**/*.*'
     },
 
@@ -43,13 +43,14 @@ global.$ = {
 };
 
 
-var config = {
+const config = {
     server: {
         baseDir: "www"
     },
     host: 'localhost',
     port: 9000,
-    logPrefix: "Frontend_Devil"
+    logPrefix: "Frontend_Devil",
+    browser: ["google chrome"]
 };
 
 /////////////////////////////////////////////////////////////////////////////////
@@ -74,10 +75,14 @@ for (var key in $.task) {
 }
 
 
-gulp.task('build', gulp.series(
+/*gulp.task('watch', function(){
+gulp.watch($.watch.html, gulp.series('html'));
+})
+*/
+gulp.task('default', gulp.series(
     'clean', gulp.parallel('css', 'html', 'fonts'))
 );
 
 gulp.task('debug',
-    gulp.series('build', gulp.parallel('watch', 'browsersync'))
+    gulp.series('default', gulp.parallel('watch', 'browsersync'))
 );
