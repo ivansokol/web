@@ -1,3 +1,3 @@
 'use strict';
 
-const а = 0;
+// var a = 0;
