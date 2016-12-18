@@ -15,12 +15,8 @@ const reporter = require('postcss-browser-reporter');
 const nested = require('postcss-nested');
 const short = require('postcss-short');
 const stylelint = require('stylelint');
-
-const LessPluginAutoPrefix = require('less-plugin-autoprefix');
-const LessPluginCSScomb = require('less-plugin-csscomb');
-
-const autoprefixer= new LessPluginAutoPrefix({ browsers: ['last 2 versions'] });
-const csscomb = new LessPluginCSScomb('csscomb');
+const sorting = require('postcss-sorting');
+const autoprefixer = require('autoprefixer');
 
 const rulesStyles = require('../.stylelintrc.json');
 
@@ -33,6 +29,10 @@ module.exports = function(options) {
       nested,
       assets,
       short,
+      autoprefixer({ browsers: ['last 2 versions'] }),
+      sorting({
+        "sort-order": "default"
+      }),
       //stylelint(rulesStyles),
       reporter({
         selector: 'body:before' })];
@@ -41,8 +41,7 @@ module.exports = function(options) {
         gulp.src(options.src),
         gulpIf(options.debug, debug({ title: 'less debug' })),
         gulpIf(options.debug, sourcemaps.init()),
-        less({
-          plugins: [autoprefixer, csscomb] }),
+        less(),
         postcss(processors),
         gulpIf(!options.debug, minifyCSS('')),
         gulpIf(!options.debug, rename({ suffix: '.min' })),
