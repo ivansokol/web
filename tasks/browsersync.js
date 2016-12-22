@@ -2,13 +2,11 @@
 
 const browserSync = require('browser-sync').create();
 
-module.exports = function(options) {
-
-  return function() {
+module.exports = function (options) {
+  return function () {
+    const path = options.config.server.baseDir.concat('/**/*.*');
 
     browserSync.init(options.config);
-
-    browserSync.watch(`${options.config.server.baseDir}/**/*.*`).on('change', browserSync.reload);
+    browserSync.watch(path).on('change', browserSync.reload);
   };
-
 };

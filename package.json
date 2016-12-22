@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "web",
   "main": "gulpfile.js",
-  "dependencies": {},
-  "devDependencies": {
+  "dependencies": {
     "autoprefixer": "^6.5.4",
     "browser-sync": "^2.18.2",
     "del": "^2.2.2",
@@ -25,8 +24,6 @@
     "gulp-rigger": "^0.5.8",
     "gulp-sourcemaps": "^1.9.1",
     "gulp-stylelint": "^3.6.1",
-    "less": "^2.7.1",
-    "opn": "^4.0.2",
     "postcss": "^5.2.6",
     "postcss-assets": "^4.1.0",
     "postcss-browser-reporter": "^0.5.0",
@@ -37,6 +34,10 @@
     "stylelint": "^7.6.0",
     "stylelint-config-standard": "^15.0.0",
     "wiredep": "^4.0.0"
+  },
+  "devDependencies": {
+    "less": "^2.7.1",
+    "opn": "^4.0.2"
   },
   "scripts": {
     "test": "gulp",

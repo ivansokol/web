@@ -14,26 +14,22 @@ const postcss = require('gulp-postcss');
 const reporter = require('postcss-browser-reporter');
 const nested = require('postcss-nested');
 const short = require('postcss-short');
-const stylelint = require('stylelint');
 const sorting = require('postcss-sorting');
 const autoprefixer = require('autoprefixer');
 
-const rulesStyles = require('../.stylelintrc.json');
+//  const stylelint = require('stylelint');
+//  const rulesStyles = require('../.stylelintrc.json');
 
 
-module.exports = function(options) {
-
-  return function() {
-
+module.exports = function (options) {
+  return function () {
     const processors = [
       nested,
       assets,
       short,
       autoprefixer({ browsers: ['last 2 versions'] }),
-      sorting({
-        "sort-order": "default"
-      }),
-      //stylelint(rulesStyles),
+      sorting({ 'sort-order': 'default' }),
+      //  stylelint(rulesStyles),
       reporter({
         selector: 'body:before' })];
 

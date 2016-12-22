@@ -10,11 +10,11 @@ const rename = require('gulp-rename');
 const eslint = require('gulp-eslint');
 const rulesEslint = require('../.eslintrc.json');
 
-module.exports = function(options) {
-  return function() {
+module.exports = function (options) {
+  return function () {
     return combine(
       gulp.src(options.src),
-      gulpIf(options.debug, debug({ title: 'js debug'})),
+      gulpIf(options.debug, debug({ title: 'js debug' })),
       gulpIf(options.debug, sourcemaps.init()),
       eslint(rulesEslint),
       eslint.format(),
@@ -24,5 +24,5 @@ module.exports = function(options) {
       gulp.dest(options.dst)).on('error', notify.onError({
         message: 'There is a JS error, please look the console for details' }));
   };
-
 };
+
