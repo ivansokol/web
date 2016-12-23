@@ -1,10 +1,22 @@
 'use strict';
 
 const gulp = require('gulp');
+const wiredep = require('wiredep').stream;
 
 module.exports = function(options) {
   return function() {
-    return gulp.src(options.src, { since: gulp.lastRun(options.taskName) })
+    var min = '.min';
+    if (options.debug) {
+      min = '';
+    }
+    return gulp.src(options.src)
+        .pipe(wiredep({
+          'overrides': {
+            'bootstrap': {
+              'main': ['./dist/css/*'.concat(min).concat('.css')]
+            }
+            }
+        }))
         .pipe(gulp.dest(options.dst));
   };
 };
