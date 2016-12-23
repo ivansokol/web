@@ -9,6 +9,8 @@ global.$ = {
     html: 'www/',
     js: 'www/js/',
     css: 'www/css/',
+    bowercss: 'www/css/',
+    bowerjs: 'www/js/',
     img: 'www/img/',
     fonts: 'www/fonts/',
     clean: 'www' },
@@ -30,6 +32,8 @@ global.$ = {
   task: { //  Тут мы укажем какие задаичм будем выполнять
     clean: './tasks/clean',
     css: './tasks/less',
+    bowercss: './tasks/bowercss',
+    bowerjs: './tasks/bowerjs',
     js: './tasks/js',
     html: './tasks/html',
     img: './tasks/img',
@@ -66,7 +70,7 @@ for (var key in $.task) {
 }
 
 gulp.task('default', gulp.series(
-  'clean', gulp.parallel('css', 'html', 'fonts', 'img', 'js')));
+  'clean', gulp.parallel('css', 'html', 'fonts', 'img', 'js', 'bowercss', 'bowerjs')));
 
 gulp.task('debug',
   gulp.series('default', gulp.parallel('watch', 'browsersync')));

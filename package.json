@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "less": "^2.7.1",
+    "main-bower-files": "^2.13.1",
     "opn": "^4.0.2"
   },
   "scripts": {
