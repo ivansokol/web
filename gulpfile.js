@@ -5,12 +5,12 @@ const gulp = require('gulp');
 const isDebug = !process.env.NODE_ENV || process.env.NODE_ENV == 'debug';
 
 global.$ = {
+  manifestpath: 'manifest/',
   dst: {//  Тут мы укажем куда складывать готовые после сборки файлы
     html: 'www/',
     js: 'www/js/',
     css: 'www/css/',
-    bowercss: 'www/css/',
-    bowerjs: 'www/js/',
+    bower: 'www/',
     img: 'www/img/',
     fonts: 'www/fonts/',
     clean: 'www' },
@@ -19,6 +19,7 @@ global.$ = {
     html: ['app/**/*.html', '!app/bower/**/*.*'], //  Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
     js: 'app/js/main.js', // В стилях и скриптах нам понадобятся только main файлы
     css: 'app/less/main.less',
+    bower: 'app/bower',
     img: 'app/img/**/*.*', // Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
     fonts: 'app/fonts/**/*.*' },
 
@@ -32,8 +33,7 @@ global.$ = {
   task: { //  Тут мы укажем какие задаичм будем выполнять
     clean: './tasks/clean',
     css: './tasks/less',
-    bowercss: './tasks/bowercss',
-    bowerjs: './tasks/bowerjs',
+    bower: './tasks/bower',
     js: './tasks/js',
     html: './tasks/html',
     img: './tasks/img',
@@ -65,12 +65,13 @@ for (var key in $.task) {
     src: $.src[key],
     dst: $.dst[key],
     debug: isDebug,
-    config: config
+    config: config,
+    manifestpath: $.manifestpath
   });
 }
 
 gulp.task('default', gulp.series(
-  'clean', gulp.parallel('css', 'html', 'fonts', 'img', 'js', 'bowercss', 'bowerjs')));
+  'clean', gulp.parallel('css', 'fonts', 'img', 'js', 'bower'), 'html'));
 
 gulp.task('debug',
   gulp.series('default', gulp.parallel('watch', 'browsersync')));
