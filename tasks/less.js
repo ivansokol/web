@@ -49,10 +49,17 @@ module.exports = function (options) {
                                         lastExt: false
                                       })
                                       )),
-        gulpIf(options.debug, sourcemaps.write()),
+        gulpIf(options.debug, combine(
+                                      rev(),
+                                      revformat({
+                                        prefix: '.',
+                                        lastExt: false
+                                      })
+                                    )),
+        gulpIf(options.debug, sourcemaps.write('.')),
         gulp.dest(options.dst),
-        gulpIf(!options.debug, combine(rev.manifest('css.json'),
-                                      gulp.dest(options.manifestpath))))
+        rev.manifest('css.json'),
+        gulp.dest(options.manifestpath))
         .on('error', notify.onError());
   };
 };

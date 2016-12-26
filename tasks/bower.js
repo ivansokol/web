@@ -12,8 +12,6 @@ const filter = require('gulp-filter');
 module.exports = function (options) {
   return function () {
     var cssjsFilter = !options.debug ? filter("**/*.min.{css,js}") : filter(['**/*.{css,js,map}', '!**/*.min.*']);
-    var cssFilter = filter("**/*.css", {restore: true});
-
     return combine(
       gulp.src( mainbowerfiles({
         path: options.src,
@@ -21,20 +19,16 @@ module.exports = function (options) {
       })),
       gulpIf(options.debug, debug({ title: 'bower debug' })),
       cssjsFilter,
-      gulpIf(!options.debug, combine(
-        cssFilter,
-        rev(),
-        revformat({
-          prefix: '.',
-          lastExt: false
-        }),
-        cssFilter.restore
-      )),
+      gulpIf('*.{js,css}', combine(rev(),
+                                  revformat({
+                                    prefix: '.',
+                                    lastExt: false
+                                  }))),
       gulp.dest(function(file){
         return file.extname == '.js' ? options.dst.concat('js') : options.dst.concat('css');
       }),
-      gulpIf(!options.debug, combine(rev.manifest('bower-rev.json'),
-                                    gulp.dest(options.manifestpath)))
+      rev.manifest('bower-rev.json'),
+      gulp.dest(options.manifestpath)
     )
   };
 };
