@@ -37,7 +37,7 @@ module.exports = function(options) {
 
     var bower = {};
 
-    var bowerManifest = options.manifestpath.concat('bower-rev.json');
+    var bowerManifest = options.manifestpath.concat('bowerfile.json');
 
     try {
       bower = JSON.parse(fs.readFileSync(bowerManifest));

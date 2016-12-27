@@ -13,6 +13,7 @@ const through2 = require('through2').obj;
 const rev = require('gulp-rev');
 const revformat = require('gulp-rev-format');
 var uglify = require('gulp-uglify');
+const filelist = require('gulp-filelist');
 
 const rulesEslint = require('../.eslintrc.json');
 
@@ -75,8 +76,9 @@ module.exports = function (options) {
       )),
       gulpIf(options.debug, sourcemaps.write('.')),
       gulp.dest(options.dst),
-      rev.manifest('js.json'),
-      gulp.dest(options.manifestpath))
+      gulpIf('*.js', filelist('js.json', { flatten: true })),
+      gulpIf('*.json', gulp.dest(options.manifestpath))
+      )
       .on('end', function() {
         fs.writeFileSync(cacheFilePath, JSON.stringify((eslintResults)));
       })

@@ -17,6 +17,7 @@ const sorting = require('postcss-sorting');
 const autoprefixer = require('autoprefixer');
 const rev = require('gulp-rev');
 const revformat = require('gulp-rev-format');
+const filelist = require('gulp-filelist');
 
 //  const stylelint = require('stylelint');
 //  const rulesStyles = require('../.stylelintrc.json');
@@ -58,8 +59,8 @@ module.exports = function (options) {
                                     )),
         gulpIf(options.debug, sourcemaps.write('.')),
         gulp.dest(options.dst),
-        rev.manifest('css.json'),
-        gulp.dest(options.manifestpath))
+        gulpIf('*.css', filelist('css.json', { flatten: true })),
+        gulpIf('*.json', gulp.dest(options.manifestpath)))
         .on('error', notify.onError());
   };
 };

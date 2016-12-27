@@ -6,6 +6,7 @@ const isDebug = !process.env.NODE_ENV || process.env.NODE_ENV == 'debug';
 
 global.$ = {
   manifestpath: 'manifest/',
+  base: 'www',
   dst: {//  Тут мы укажем куда складывать готовые после сборки файлы
     html: 'www/',
     js: 'www/js/',
@@ -66,7 +67,8 @@ for (var key in $.task) {
     dst: $.dst[key],
     debug: isDebug,
     config: config,
-    manifestpath: $.manifestpath
+    manifestpath: $.manifestpath,
+    base: $.base
   });
 }
 
