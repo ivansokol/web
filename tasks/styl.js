@@ -7,9 +7,9 @@ const debug = require('gulp-debug');
 const sourcemaps = require('gulp-sourcemaps');
 const combine = require('stream-combiner2').obj;
 const minifyCSS = require('gulp-minify-css');
-const less = require('gulp-less');
-const assets = require('postcss-assets');
+const stylus = require('gulp-stylus');
 const postcss = require('gulp-postcss');
+const assets = require('postcss-assets');
 const reporter = require('postcss-browser-reporter');
 const nested = require('postcss-nested');
 const short = require('postcss-short');
@@ -37,10 +37,10 @@ module.exports = function (options) {
 
     return combine(
         gulp.src(options.src),
-        gulpIf(options.debug, debug({ title: 'less debug' })),
+        gulpIf(options.debug, debug({ title: 'stylus debug' })),
         gulpIf(options.debug, sourcemaps.init()),
-        less(),
         postcss(processors),
+        stylus(),
         gulpIf(!options.debug, combine(
                                       minifyCSS(''),
                                       rev(),
@@ -50,14 +50,8 @@ module.exports = function (options) {
                                         lastExt: false
                                       })
                                       )),
-        gulpIf(options.debug, combine(
-                                      rev(),
-                                      revformat({
-                                        prefix: '.',
-                                        lastExt: false
-                                      })
-                                    )),
         gulpIf(options.debug, sourcemaps.write('.')),
+        gulpIf(options.debug, debug({ title: 'stylus end' })),
         gulp.dest(options.dst),
         gulpIf('*.css', filelist('css.json', { flatten: true })),
         gulpIf('*.json', gulp.dest(options.manifestpath)))

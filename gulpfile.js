@@ -19,7 +19,7 @@ global.$ = {
   src: { // Пути откуда брать исходники
     html: ['app/**/*.html', '!app/bower/**/*.*'], //  Синтаксис src/*.html говорит gulp что мы хотим взять все файлы с расширением .html
     js: 'app/js/main.js', // В стилях и скриптах нам понадобятся только main файлы
-    css: 'app/less/main.less',
+    css: 'app/styl/main.styl',
     bower: 'app/bower',
     img: 'app/img/**/*.*', // Синтаксис img/**/*.* означает - взять все файлы всех расширений из папки и из вложенных каталогов
     fonts: 'app/fonts/**/*.*' },
@@ -27,13 +27,13 @@ global.$ = {
   watch: { // Тут мы укажем, за изменением каких файлов мы хотим наблюдать
     html: 'app/**/*.html',
     js: 'app/js/**/*.js',
-    css: 'app/less/**/*.less',
+    css: 'app/styl/**/*.styl',
     img: 'app/img/**/*.*',
     fonts: 'app/fonts/**/*.*' },
 
   task: { //  Тут мы укажем какие задаичм будем выполнять
     clean: './tasks/clean',
-    css: './tasks/less',
+    css: './tasks/styl',
     bower: './tasks/bower',
     js: './tasks/js',
     html: './tasks/html',

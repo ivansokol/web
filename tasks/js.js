@@ -67,13 +67,6 @@ module.exports = function (options) {
           lastExt: false
         })
       )),
-      gulpIf(options.debug, combine(
-        rev(),
-        revformat({
-          prefix: '.',
-          lastExt: false
-        })
-      )),
       gulpIf(options.debug, sourcemaps.write('.')),
       gulp.dest(options.dst),
       gulpIf('*.js', filelist('js.json', { flatten: true })),
