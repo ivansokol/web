@@ -39,8 +39,8 @@ module.exports = function (options) {
         gulp.src(options.src),
         gulpIf(options.debug, debug({ title: 'stylus debug' })),
         gulpIf(options.debug, sourcemaps.init()),
-        postcss(processors),
         stylus(),
+        postcss(processors),
         gulpIf(!options.debug, combine(
                                       minifyCSS(''),
                                       rev(),
