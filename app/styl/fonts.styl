@@ -1,53 +1,53 @@
 
-font($fontName, $fontType, $fontPath, $weight = normal, $style = normal)
-  font-family: $fontName + $fontType;
-  src: url($fontPath +'/'+ $fontName + '/' + $fontName + '-' + $fontType + '.eot');
-  src: url($fontPath +'/'+ $fontName + '/' + $fontName + '-' + $fontType + '.eot#iefix') format('embedded-opentype'),
-  url($fontPath +'/'+ $fontName + '/' + $fontName + '-' + $fontType + '.woff') format('woff'),
-  url($fontPath +'/'+ $fontName + '/' + $fontName + '-' + $fontType + '.ttf') format('truetype'),
-  url($fontPath +'/'+ $fontName + '/' + $fontName + '-' + $fontType + '.svg#' + $fontName + $fontType) format('svg');
-  font-weight: $weight;
-  font-style: $style;
+font(fontName, fontType, fontPath, weight = normal, style = normal)
+  font-family: fontName + fontType;
+  src: url(fontPath +'/'+ fontName + '/' + fontName + '-' + fontType + '.eot');
+  src: url(fontPath +'/'+ fontName + '/' + fontName + '-' + fontType + '.eot#iefix') format('embedded-opentype'),
+  url(fontPath +'/'+ fontName + '/' + fontName + '-' + fontType + '.woff') format('woff'),
+  url(fontPath +'/'+ fontName + '/' + fontName + '-' + fontType + '.ttf') format('truetype'),
+  url(fontPath +'/'+ fontName + '/' + fontName + '-' + fontType + '.svg#' + fontName + fontType) format('svg');
+  font-weight: weight;
+  font-style: style;
 
 
 ///////////////////////////////////////////////////////////////////////////////////
-$fontType1 =  'regular';
-$fontType2 = 'italic';
-$fontType3 = 'light';
-$fontType4 = 'semibold';
+fontType1 =  'regular'
+fontType2 = 'italic'
+fontType3 = 'light'
+fontType4 = 'semibold'
 ///////////////////////////////////////////////////////////////////////////////////
 
-$fontName1 = 'roboto';
+fontName1 = 'roboto'
 
 @font-face {
-  font($fontName1, $fontType1, $fontPath);
-}
-
-///////////////////////////////////////////////////////////////////////////////////
-
-$fontName2 = 'robotoslab';
-
-@font-face {
-  font($fontName2, $fontType1, $fontPath);
+  font(fontName1, fontType1, fontPath);
 }
 
 ///////////////////////////////////////////////////////////////////////////////////
 
-$fontName3 = 'open_sans';
+fontName2 = 'robotoslab'
 
 @font-face {
-  font($fontName3, $fontType1, $fontPath);
+  font(fontName2, fontType1, fontPath);
+}
+
+///////////////////////////////////////////////////////////////////////////////////
+
+fontName3 = 'open_sans'
+
+@font-face {
+  font(fontName3, fontType1, fontPath);
 }
 
 @font-face {
-  font($fontName3, $fontType2, $fontPath);
+  font(fontName3, fontType2, fontPath);
 }
 
 @font-face {
-  font($fontName3, $fontType3, $fontPath);
+  font(fontName3, fontType3, fontPath);
 }
 
 @font-face {
-  font($fontName3, $fontType4, $fontPath);
+  font(fontName3, fontType4, fontPath);
 }
 ///////////////////////////////////////////////////////////////////////////////////

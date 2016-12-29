@@ -25,11 +25,11 @@ global.$ = {
     fonts: 'app/fonts/**/*.*' },
 
   watch: { // Тут мы укажем, за изменением каких файлов мы хотим наблюдать
-    html: 'app/**/*.html',
-    js: 'app/js/**/*.js',
-    css: 'app/styl/**/*.styl',
-    img: 'app/img/**/*.*',
-    fonts: 'app/fonts/**/*.*' },
+    'app/**/*.html': 'html',
+    'app/js/**/*.js': 'js',
+    'app/styl/**/*.styl': 'css',
+    'app/img/**/*.*': 'img',
+    'app/fonts/**/*.*': 'fonts' },
 
   task: { //  Тут мы укажем какие задаичм будем выполнять
     clean: './tasks/clean',
